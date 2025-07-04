@@ -5,6 +5,7 @@ import { useState } from "react"; // Import React hook to manage component state
 export default function Home() {
   // State for the input textarea
   const [input, setInput] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false); // Controls mobile menu visibility
 
   // State for the summary output box
   const [summary, setSummary] = useState("");
@@ -30,11 +31,18 @@ export default function Home() {
     <div>
       {/* 🔷 HEADER SECTION */}
       <header className="header">
-        {/* Left side: App name */}
+        {/* 🔹 Left: App Name */}
         <div className="logo">QuickSummary</div>
 
-        {/* Right side: Navigation links */}
-        <nav className="nav-links">
+        {/* 🔹 Right: Hamburger Icon (only shown on mobile) */}
+        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
+
+        {/* 🔹 Nav links – hidden on mobile unless menuOpen is true */}
+        <nav className={`nav-links ${menuOpen ? "show" : ""}`}>
           <a href="#">Home</a>
           <a href="#">About</a>
           <a href="#">Contact</a>
@@ -84,7 +92,7 @@ export default function Home() {
 
         {/* Footer section */}
         <footer>
-          <p>Built with ❤️ by Abhinav</p>
+          <p>Built with 💙 by Abhinav</p>
         </footer>
       </main>
     </div>

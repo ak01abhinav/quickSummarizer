@@ -146,3 +146,57 @@ footer {
     width: 100%;
   }
 }
+
+/* =============================
+   🍔 Hamburger Styles (Mobile)
+============================= */
+
+/* Hamburger icon hidden by default (shown on small screens only) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+
+/* =============================
+   📱 Mobile Navigation Tweaks
+============================= */
+@media (max-width: 768px) {
+  /* Make hamburger icon visible */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide nav links unless toggled */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    background-color: #1e293b;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  /* When .show class is added, display nav */
+  .nav-links.show {
+    display: flex;
+  }
+
+  /* Optional: make links wider and easier to tap */
+  .nav-links a {
+    padding: 0.5rem 0;
+  }
+}
+.nav-links {
+  transition: all 0.3s ease;
+}
