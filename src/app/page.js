@@ -77,10 +77,7 @@ export default function Home() {
           <h3>Summary:</h3>
 
           {/* Show summary if available, otherwise show placeholder message */}
-          <p>
-            {summary ||
-              "Summary will appear here after user hits the button..."}
-          </p>
+          <p>{summary || "..."}</p>
         </div>
 
         {/* Follow-up placeholder section */}
