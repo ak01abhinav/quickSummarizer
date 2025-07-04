@@ -1,60 +1,63 @@
-/* -----------------------------------
-   🌌 GLOBAL STYLES – DARK THEME
-   Applies to entire app layout
------------------------------------ */
+/* =============================
+   🌌 Global Layout & Background
+============================= */
 body {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", sans-serif;
-  background-color: #0f172a; /* Dark bluish-gray background */
-  color: #f1f5f9; /* Soft white text for good contrast */
+  background-color: #0f172a; /* Dark background */
+  color: #f1f5f9;
 }
 
-/* -----------------------------------
-   🔷 HEADER SECTION
-   Top navigation bar with app title & links
------------------------------------ */
+/* =============================
+   🔷 Header
+============================= */
 .header {
   display: flex;
-  justify-content: space-between; /* Space between logo and nav links */
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* ✅ Allows nav to wrap on small screens */
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #1e3a8a, #0ea5e9); /* Blue gradient */
+  background: linear-gradient(135deg, #1e3a8a, #0ea5e9);
   color: white;
 }
 
-/* App name/logo */
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-/* Navigation links (right side) */
+/* ✅ Make nav wrap below logo on small screens */
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
 .nav-links a {
-  margin-left: 1.5rem;
   text-decoration: none;
-  color: #e0f2fe; /* Soft blue-white */
+  color: #e0f2fe;
   font-weight: 500;
+  font-size: 1rem;
 }
 
 .nav-links a:hover {
   text-decoration: underline;
 }
 
-/* -----------------------------------
-   🔳 MAIN CONTENT AREA
-   Includes heading, textarea, summary box, follow-up section, etc.
------------------------------------ */
+/* =============================
+   🔳 Main Content
+============================= */
 main {
-  padding: 2rem;
-  max-width: 800px; /* Keeps content centered and readable */
-  margin: 0 auto; /* Center align the section horizontally */
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* -----------------------------------
-   ✏️ TEXTAREA INPUT BOX
-   Where users paste content to summarize
------------------------------------ */
+/* =============================
+   ✍️ Text Area
+============================= */
 textarea {
   width: 100%;
   padding: 1rem;
@@ -62,51 +65,45 @@ textarea {
   border-radius: 10px;
   border: none;
   font-size: 1rem;
-  background-color: #1e293b; /* Darker background */
-  color: #f8fafc; /* Bright text color */
-  resize: vertical; /* Allow vertical resizing */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  background-color: #1e293b;
+  color: #f8fafc;
+  resize: vertical;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* -----------------------------------
-   🔘 SUBMIT BUTTON
-   Trigger for summarization
------------------------------------ */
+/* =============================
+   🔘 Button
+============================= */
 button {
   padding: 0.75rem 2rem;
   font-size: 1rem;
-  background: #0ea5e9; /* Sky blue */
+  background: #0ea5e9;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease;
+  margin: 1rem 0;
 }
 
 button:hover {
-  background: #0284c7; /* Slightly darker on hover */
+  background: #0284c7;
 }
 
-/* -----------------------------------
-   📦 SUMMARY BOX
-   Displays AI-generated summary after button click
------------------------------------ */
+/* =============================
+   📦 Summary Box
+============================= */
 .summary-box {
   margin-top: 2rem;
   padding: 1rem;
-  background-color: #1e293b; /* Same dark box as textarea */
+  background-color: #1e293b;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
 }
 
-.summary-box h3 {
-  margin-top: 0;
-}
-
-/* -----------------------------------
-   ⌛ LOADING / INFO TEXTS
-   Placeholder or follow-up hints
------------------------------------ */
+/* =============================
+   ℹ️ Info Texts & Follow-Up
+============================= */
 .text-sm {
   font-size: 0.9rem;
 }
@@ -115,14 +112,37 @@ button:hover {
   font-style: italic;
 }
 
-/* -----------------------------------
-   ❤️ FOOTER SECTION
-   Bottom of the page message
------------------------------------ */
+/* =============================
+   ❤️ Footer
+============================= */
 footer {
   text-align: center;
   margin-top: 3rem;
   padding: 1rem;
   font-size: 0.9rem;
-  color: #94a3b8; /* Light gray-blue for footer */
+  color: #94a3b8;
+}
+
+/* =============================
+   📱 Responsive: Small Screens
+============================= */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 1rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  button {
+    width: 100%;
+  }
 }
