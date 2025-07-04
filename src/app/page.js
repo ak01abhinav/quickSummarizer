@@ -1,95 +1,92 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"; // This makes the component run on the client-side (browser) in Next.js 13+ App Router
+
+import { useState } from "react"; // Import React hook to manage component state
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  // State for the input textarea
+  const [input, setInput] = useState("");
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+  // State for the summary output box
+  const [summary, setSummary] = useState("");
+
+  // Function that runs when the "Summarize" button is clicked
+  const handleSummarize = async () => {
+    try {
+      const res = await fetch("/api/summarize", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: input }),
+      });
+
+      const data = await res.json();
+      setSummary(data.summary);
+    } catch (err) {
+      setSummary("❌ Something went wrong.");
+      console.error(err);
+    }
+  };
+
+  return (
+    <div>
+      {/* 🔷 HEADER SECTION */}
+      <header className="header">
+        {/* Left side: App name */}
+        <div className="logo">QuickSummary</div>
+
+        {/* Right side: Navigation links */}
+        <nav className="nav-links">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+      </header>
+
+      {/* 🔷 MAIN CONTENT SECTION */}
+      <main>
+        {/* App welcome heading */}
+        <h1 style={{ textAlign: "center" }}>
+          Welcome to <strong>QuickSummary</strong>
+        </h1>
+
+        {/* Textarea for user to paste their content to summarize */}
+        <textarea
+          placeholder="Paste your content here..."
+          rows={8}
+          value={input}
+          onChange={(e) => setInput(e.target.value)} // Updates input state as user types
+        />
+
+        {/* Summarize button */}
+        <div style={{ textAlign: "center" }}>
+          <button onClick={handleSummarize}>Summarize</button>
         </div>
+
+        {/* Summary output box */}
+        <div className="summary-box">
+          <h3>Summary:</h3>
+
+          {/* Show summary if available, otherwise show placeholder message */}
+          <p>
+            {summary ||
+              "Summary will appear here after user hits the button..."}
+          </p>
+        </div>
+
+        {/* Follow-up placeholder section */}
+        <div style={{ marginTop: "2rem", textAlign: "center" }}>
+          <p className="text-sm text-blue-200 italic">
+            🔄 Follow-up Q&A coming soon…
+          </p>
+          <p style={{ fontSize: "0.85rem", color: "#334155" }}>
+            You’ll be able to ask anything after summarizing your content.
+          </p>
+        </div>
+
+        {/* Footer section */}
+        <footer>
+          <p>Built with ❤️ by Abhinav</p>
+        </footer>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

@@ -1,42 +1,128 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
+/* -----------------------------------
+   🌌 GLOBAL STYLES – DARK THEME
+   Applies to entire app layout
+----------------------------------- */
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #0f172a; /* Dark bluish-gray background */
+  color: #f1f5f9; /* Soft white text for good contrast */
 }
 
-a {
-  color: inherit;
+/* -----------------------------------
+   🔷 HEADER SECTION
+   Top navigation bar with app title & links
+----------------------------------- */
+.header {
+  display: flex;
+  justify-content: space-between; /* Space between logo and nav links */
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #1e3a8a, #0ea5e9); /* Blue gradient */
+  color: white;
+}
+
+/* App name/logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Navigation links (right side) */
+.nav-links a {
+  margin-left: 1.5rem;
   text-decoration: none;
+  color: #e0f2fe; /* Soft blue-white */
+  font-weight: 500;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* -----------------------------------
+   🔳 MAIN CONTENT AREA
+   Includes heading, textarea, summary box, follow-up section, etc.
+----------------------------------- */
+main {
+  padding: 2rem;
+  max-width: 800px; /* Keeps content centered and readable */
+  margin: 0 auto; /* Center align the section horizontally */
+}
+
+/* -----------------------------------
+   ✏️ TEXTAREA INPUT BOX
+   Where users paste content to summarize
+----------------------------------- */
+textarea {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  background-color: #1e293b; /* Darker background */
+  color: #f8fafc; /* Bright text color */
+  resize: vertical; /* Allow vertical resizing */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+/* -----------------------------------
+   🔘 SUBMIT BUTTON
+   Trigger for summarization
+----------------------------------- */
+button {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  background: #0ea5e9; /* Sky blue */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #0284c7; /* Slightly darker on hover */
+}
+
+/* -----------------------------------
+   📦 SUMMARY BOX
+   Displays AI-generated summary after button click
+----------------------------------- */
+.summary-box {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #1e293b; /* Same dark box as textarea */
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+}
+
+.summary-box h3 {
+  margin-top: 0;
+}
+
+/* -----------------------------------
+   ⌛ LOADING / INFO TEXTS
+   Placeholder or follow-up hints
+----------------------------------- */
+.text-sm {
+  font-size: 0.9rem;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* -----------------------------------
+   ❤️ FOOTER SECTION
+   Bottom of the page message
+----------------------------------- */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #94a3b8; /* Light gray-blue for footer */
 }
