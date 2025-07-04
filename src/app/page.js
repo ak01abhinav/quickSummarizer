@@ -31,22 +31,25 @@ export default function Home() {
     <div>
       {/* 🔷 HEADER SECTION */}
       <header className="header">
-        {/* 🔹 Left: App Name */}
+        {/* 🔹 Left Side: Logo */}
         <div className="logo">QuickSummary</div>
 
-        {/* 🔹 Right: Hamburger Icon (only shown on mobile) */}
-        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
-        </div>
+        {/* 🔹 Right Side: Nav and Hamburger wrapped together */}
+        <div className="header-right">
+          {/* Hamburger Icon (visible on mobile) */}
+          <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </div>
 
-        {/* 🔹 Nav links – hidden on mobile unless menuOpen is true */}
-        <nav className={`nav-links ${menuOpen ? "show" : ""}`}>
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-        </nav>
+          {/* Nav Links */}
+          <nav className={`nav-links ${menuOpen ? "show" : ""}`}>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+          </nav>
+        </div>
       </header>
 
       {/* 🔷 MAIN CONTENT SECTION */}

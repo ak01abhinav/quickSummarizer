@@ -200,3 +200,10 @@ footer {
 .nav-links {
   transition: all 0.3s ease;
 }
+/* Wrapper for nav + hamburger to align right */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto; /* Pushes to right */
+}
