@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/node": "25.0.10",
+    "@types/react": "19.2.9",
     "autoprefixer": "^10.4.23",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",

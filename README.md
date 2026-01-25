@@ -34,3 +34,44 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+---
+
+structure of the project -->
+
+src/
+├── app/
+│ ├── layout.tsx
+│ ├── page.tsx
+│ │
+│ ├── api/
+│ │ └── summarize/
+│ │ └── route.ts
+│ │
+│ └── globals.css
+│
+├── components/
+│ ├── layout/
+│ │ ├── Navbar.tsx
+│ │ └── Footer.tsx
+│ │
+│ ├── home/
+│ │ ├── Hero.tsx
+│ │ ├── InputCard.tsx
+│ │ ├── SummaryOutput.tsx
+│ │ ├── FollowUpTeaser.tsx
+│ │ └── RecentSummaries.tsx
+│ │
+│ └── ui/
+│ └── (shadcn components only)
+│
+├── lib/
+│ ├── utils.ts
+│ ├── constants.ts
+│ └── mock-data.ts
+│
+├── styles/
+│ └── themes.css (optional, later)
+│
+└── types/
+└── index.ts
