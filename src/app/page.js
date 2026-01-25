@@ -32,7 +32,7 @@ export default function Home() {
       {/* 🔷 HEADER SECTION */}
       <header className="header">
         {/* 🔹 Left Side: Logo */}
-        <div className="logo">QuickSummary</div>
+        <div className="logo">Q_Summ</div>
 
         {/* 🔹 Right Side: Nav and Hamburger wrapped together */}
         <div className="header-right">
