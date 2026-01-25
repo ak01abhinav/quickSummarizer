@@ -14,18 +14,19 @@ export async function POST(request: NextRequest) {
         const apiKey = process.env.GEMINI_API_KEY;
 
         if (!apiKey) {
-            console.error("❌ GEMINI_API_KEY is not defined");
+            console.error("GEMINI_API_KEY is not defined");
             return NextResponse.json({ error: "API configuration error" }, { status: 500 });
         }
 
         // Send a POST request to the Gemini API to summarize the text
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+
         const response = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
+            url,
             {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "X-goog-api-key": apiKey, // Auth header
                 },
                 body: JSON.stringify({
                     contents: [
@@ -39,7 +40,7 @@ export async function POST(request: NextRequest) {
 
         if (!response.ok) {
             const errorData = await response.json();
-            console.error("❌ Gemini API Error:", errorData);
+            console.error("Gemini API Error:", errorData);
             return NextResponse.json({ error: "Failed to fetch summary from Gemini" }, { status: response.status });
         }
 
@@ -54,7 +55,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ summary: output });
     } catch (error) {
         // Handle and log any errors that occur during the request
-        console.error("❌ Error in API route:", error);
+        console.error("Error in API route:", error);
 
         // Return a 500 status error with a message
         return NextResponse.json({ error: "Failed to summarize." }, { status: 500 });
