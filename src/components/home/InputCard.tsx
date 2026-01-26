@@ -1,4 +1,10 @@
-import { FileText, Link as LinkIcon, Zap, ChevronDown, Loader2 } from "lucide-react";
+import {
+  FileText,
+  Link as LinkIcon,
+  Zap,
+  ChevronDown,
+  Loader2,
+} from "lucide-react";
 
 export default function InputCard({
   onSummarize,
@@ -13,9 +19,9 @@ export default function InputCard({
 }) {
   return (
     <section className="mx-auto -mt-20 max-w-4xl px-6">
-      <div className="overflow-hidden rounded-2xl border border-white/5 bg-[#0b1220]/50 p-1 backdrop-blur-sm">
-        <div className="rounded-xl bg-[#0b1220] p-6 shadow-2xl">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-md bg-blue-500/10 px-2 py-1 text-[10px] font-bold tracking-wider text-blue-400">
+      <div className="overflow-hidden rounded-2xl border bg-secondary/50 p-1 backdrop-blur-sm shadow-2xl">
+        <div className="rounded-xl bg-card p-6 shadow-xl">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-md bg-primary/10 px-2 py-1 text-[10px] font-bold tracking-wider text-primary">
             AI ENGINE READY
           </div>
 
@@ -23,20 +29,29 @@ export default function InputCard({
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Paste your content or drop a URL here..."
-            className="h-48 w-full resize-none border-none bg-transparent p-0 text-lg text-white outline-none placeholder:text-gray-600 focus:ring-0"
+            className="h-48 w-full resize-none border-none bg-transparent p-0 text-lg text-foreground outline-none placeholder:text-muted-foreground focus:ring-0"
             disabled={loading}
           />
 
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/5 pt-6">
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t pt-6">
             <div className="flex items-center gap-4">
-              <button className="text-gray-500 transition-colors hover:text-white disabled:opacity-50" disabled={loading}>
+              <button
+                className="text-muted-foreground transition-colors hover:text-foreground disabled:opacity-50"
+                disabled={loading}
+              >
                 <FileText className="h-5 w-5" />
               </button>
-              <button className="text-gray-500 transition-colors hover:text-white disabled:opacity-50" disabled={loading}>
+              <button
+                className="text-muted-foreground transition-colors hover:text-foreground disabled:opacity-50"
+                disabled={loading}
+              >
                 <LinkIcon className="h-5 w-5" />
               </button>
-              <div className="h-4 w-px bg-white/10 mx-2" />
-              <button className="flex items-center gap-2 text-xs font-medium text-gray-400 hover:text-white disabled:opacity-50" disabled={loading}>
+              <div className="h-4 w-px bg-border mx-2" />
+              <button
+                className="flex items-center gap-2 text-xs font-medium text-muted-foreground hover:text-foreground disabled:opacity-50"
+                disabled={loading}
+              >
                 Concise Summary
                 <ChevronDown className="h-3 w-3" />
               </button>
@@ -45,7 +60,7 @@ export default function InputCard({
             <button
               onClick={onSummarize}
               disabled={loading || !text.trim()}
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:scale-100 cursor-pointer disabled:cursor-not-allowed"
+              className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:scale-100 cursor-pointer disabled:cursor-not-allowed"
             >
               {loading ? (
                 <>

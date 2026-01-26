@@ -9,7 +9,7 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="mx-auto mt-8 max-w-2xl text-lg text-gray-400 md:text-xl">
+        <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl">
           Transform long articles, documents, or URLs into concise, actionable
           insights in seconds using advanced AI.
         </p>
