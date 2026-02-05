@@ -17,7 +17,7 @@ export default function Navbar() {
           className="flex items-center gap-2 text-lg font-semibold"
         >
           <BookOpenText className="h-5 w-5 text-primary" />
-          QuickSummary
+          Quick Genie
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
