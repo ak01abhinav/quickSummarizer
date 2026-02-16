@@ -9,19 +9,31 @@ import { BookOpenText } from "lucide-react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.history.pushState({}, "", "/");
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           href="/"
           className="flex items-center gap-2 text-lg font-semibold"
+          onClick={handleHomeClick}
         >
           <BookOpenText className="h-5 w-5 text-primary" />
           Quick Genie
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
-          <Link href="/" className="transition-colors hover:text-foreground">
+          <Link
+            href="/"
+            className="transition-colors hover:text-foreground"
+            onClick={handleHomeClick}
+          >
             Home
           </Link>
           <Link href="#how" className="transition-colors hover:text-foreground">
@@ -60,7 +72,7 @@ export default function Navbar() {
             <Link
               href="/"
               className="hover:text-foreground"
-              onClick={() => setIsOpen(false)}
+              onClick={handleHomeClick}
             >
               Home
             </Link>
