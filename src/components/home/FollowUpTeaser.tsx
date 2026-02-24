@@ -22,7 +22,7 @@ export default function FollowUpTeaser() {
           </div>
         </div>
         <button className="rounded-lg border bg-secondary/50 px-4 py-2 text-xs font-medium text-foreground transition-all hover:bg-secondary">
-          {/* Join Waitlist */}
+          Join Waitlist
         </button>
       </div>
     </section>
