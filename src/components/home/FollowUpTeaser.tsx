@@ -16,8 +16,8 @@ export default function FollowUpTeaser() {
               </span>
             </h4>
             <p className="text-xs text-muted-foreground">
-              You'll be able to ask specific questions about your summarized
-              content.
+              You&apos;ll be able to ask specific questions about your
+              summarized content.
             </p>
           </div>
         </div>
