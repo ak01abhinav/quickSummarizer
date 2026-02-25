@@ -1,27 +1,44 @@
-name: CI
+name: Verify
 
 on:
+  pull_request:
+    branches: [main]
   push:
-    branches: ["main"]
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
+  verify:
+    name: Lint • Types • Build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Use Node 20
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version: 20
+          cache: npm
 
-      - name: Install dependencies
+      - name: Install dependencies (deterministic)
         run: npm ci
 
-      - name: Run linting
-        run: npm run lint
+      - name: Validate lockfile integrity
+        run: npm ls --depth=0
+
+      - name: Lint (no warnings allowed)
+        run: npm run lint -- --max-warnings=0
+
+      - name: TypeScript verification
+        run: npm run typecheck
 
       - name: Build application
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
         run: npm run build
