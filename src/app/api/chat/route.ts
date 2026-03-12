@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
                              "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400"
                          },
                          next: { revalidate: 3600 }
-                     }
+                     } as RequestInit & { next: { revalidate: number } }
                  );
 
                  console.log("response>>>>>>>>>>>>>>", promptOtResponse);
@@ -55,9 +55,9 @@ export async function POST(request: NextRequest) {
 
                      if (extracted && typeof extracted === "string") {
                          systemPromptText = extracted;
-                         console.log("✅ Using PromptOT prompt successfully.");
+                         console.log("Using PromptOT prompt successfully.");
                      } else {
-                         console.warn("⚠️ PromptOT returned data but no known text field was found. Falling back to default prompt.");
+                         console.warn("PromptOT returned data but no known text field was found. Falling back to default prompt.");
                      }
                  } else {
                      console.error(`PromptOT Error: ${promptOtResponse.status} - ${promptOtResponse.statusText}`);

@@ -3,8 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import { X, Send, User } from "lucide-react";
 import { RiRobot3Line } from "react-icons/ri";
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 import { cn } from "@/lib/utils"; // Assuming shadcn/ui utils is present based on styling. If not, will replace.
 import { Button } from "@/components/ui/button"; // Assuming shadcn is present based on standard Nextjs tailwind setup.
@@ -21,7 +21,7 @@ export default function Chatbot() {
     {
       role: "assistant",
       content:
-        "Hi! I'm the quickSummarizer assistant. How can I help you understand our features today?",
+        "Hi! I'm the quickSummarizer assistant. How can I help you today?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -79,7 +79,7 @@ export default function Chatbot() {
     <div className="fixed bottom-4 right-4 z-50">
       {/* Chat Window */}
       {isOpen && (
-        <div className="mb-4 flex h-[500px] w-[350px] flex-col overflow-hidden rounded-2xl border bg-background shadow-2xl transition-all duration-300 sm:w-[400px]">
+        <div className="mb-4 flex h-[70vh] max-h-[600px] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border bg-background shadow-2xl transition-all duration-300 sm:h-[500px] sm:w-[400px]">
           {/* Header */}
           <div className="flex items-center justify-between border-b bg-muted/50 p-4">
             <div className="flex items-center gap-2">
@@ -132,18 +132,32 @@ export default function Chatbot() {
                     "rounded-2xl px-4 py-2 text-sm max-w-full break-words prose prose-sm dark:prose-invert prose-p:leading-relaxed prose-pre:p-0",
                     message.role === "assistant"
                       ? "bg-muted rounded-tl-none text-foreground"
-                      : "bg-primary text-primary-foreground rounded-tr-none"
+                      : "bg-primary text-primary-foreground rounded-tr-none",
                   )}
                 >
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     components={{
                       a: ({ ...props }) => (
-                        <a {...props} className="font-medium underline underline-offset-4 text-primary break-all" target="_blank" rel="noopener noreferrer" />
+                        <a
+                          {...props}
+                          className="font-medium underline underline-offset-4 text-primary break-all"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        />
                       ),
-                      p: ({ ...props }) => <p className="mb-2 last:mb-0 whitespace-pre-wrap leading-relaxed break-words" {...props} />,
-                      ul: ({ ...props }) => <ul className="mb-2 ml-4 list-disc" {...props} />,
-                      ol: ({ ...props }) => <ol className="mb-2 ml-4 list-decimal" {...props} />,
+                      p: ({ ...props }) => (
+                        <p
+                          className="mb-2 last:mb-0 whitespace-pre-wrap leading-relaxed break-words"
+                          {...props}
+                        />
+                      ),
+                      ul: ({ ...props }) => (
+                        <ul className="mb-2 ml-4 list-disc" {...props} />
+                      ),
+                      ol: ({ ...props }) => (
+                        <ol className="mb-2 ml-4 list-decimal" {...props} />
+                      ),
                       li: ({ ...props }) => <li className="mt-1" {...props} />,
                     }}
                   >
