@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { X, Send, User, Plus, History, Trash2, ChevronLeft } from "lucide-react";
 import { RiRobot3Line } from "react-icons/ri";
 import ReactMarkdown from "react-markdown";
@@ -104,8 +104,11 @@ export default function Chatbot() {
     localStorage.setItem("quick_summarizer_chat_open", isOpen.toString());
   }, [isOpen]);
 
-  const activeSession = sessions.find((s) => s.id === activeSessionId) || null;
-  const messages = activeSession?.messages || [];
+  const activeSession = useMemo(
+    () => sessions.find((s) => s.id === activeSessionId) || null,
+    [sessions, activeSessionId]
+  );
+  const messages = useMemo(() => activeSession?.messages || [], [activeSession]);
 
   const createNewChat = () => {
     const newSession: ChatSession = {
