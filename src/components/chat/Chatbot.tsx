@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import { cn } from "@/lib/utils";
+import { AnimatedRobot } from "./AnimatedRobot";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -245,8 +246,8 @@ export default function Chatbot() {
           {/* Header */}
           <div className="flex items-center justify-between border-b bg-muted/30 p-5 shrink-0">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10">
-                <RiRobot3Line className="h-6 w-6 text-primary" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/5 overflow-hidden ring-1 ring-primary/10">
+                <AnimatedRobot size={32} />
               </div>
               <div>
                 <h3 className="font-bold text-base leading-tight">Summarizer AI</h3>
@@ -439,14 +440,14 @@ export default function Chatbot() {
                   >
                     <div
                       className={cn(
-                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-[1.2rem] shadow-sm ring-1",
+                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-[1.2rem] shadow-sm ring-1 overflow-hidden",
                         message.role === "assistant"
-                          ? "bg-primary text-primary-foreground ring-primary/20"
+                          ? "bg-blue-50/50 dark:bg-blue-950/30 ring-primary/20"
                           : "bg-muted text-muted-foreground ring-muted-foreground/10",
                       )}
                     >
                       {message.role === "assistant" ? (
-                        <RiRobot3Line className="h-5 w-5" />
+                        <AnimatedRobot size={28} />
                       ) : (
                         <User className="h-5 w-5" />
                       )}
@@ -489,8 +490,8 @@ export default function Chatbot() {
                 
                 {isTyping && (
                   <div className="flex items-start gap-4 max-w-[85%] animate-in fade-in slide-in-from-bottom-2 duration-300">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[1.2rem] bg-primary text-primary-foreground shadow-sm">
-                      <RiRobot3Line className="h-6 w-6 animate-pulse" />
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[1.2rem] bg-blue-50/50 dark:bg-blue-950/30 ring-1 ring-primary/20 shadow-sm overflow-hidden">
+                      <AnimatedRobot size={28} className="animate-pulse" />
                     </div>
                     <div className="rounded-[1.5rem] bg-muted/30 ring-1 ring-muted/20 rounded-tl-none px-6 py-5 flex flex-col gap-2">
                        <div className="flex gap-1.5 px-1">
@@ -553,23 +554,23 @@ export default function Chatbot() {
       {/* </div>  <- Note: The outermost wrapper is already closed by line 570 */}
 
       {/* Toggle Button */}
-      <Button
+      <button
         onClick={() => setIsOpen(true)}
         className={cn(
-          "absolute bottom-0 right-0 h-16 w-16 p-0 rounded-[2rem] shadow-2xl hover:shadow-primary/40 transition-all duration-500 hover:scale-110 flex items-center justify-center group bg-primary overflow-hidden",
+          "absolute bottom-0 right-0 h-[80px] w-[80px] p-0 transition-all duration-500 flex items-center justify-center group outline-none border-none focus:outline-none focus:ring-0 active:outline-none focus-visible:outline-none",
           isOpen 
-            ? "opacity-0 scale-50 pointer-events-none rotate-90" 
-            : "opacity-100 scale-100 pointer-events-auto rotate-0"
+            ? "opacity-0 scale-50 pointer-events-none translate-y-10" 
+            : "opacity-100 scale-100 hover:scale-[1.05] pointer-events-auto translate-y-0"
         )}
+        style={{ WebkitTapHighlightColor: "transparent" }}
       >
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary via-primary-foreground/10 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <RiRobot3Line className="h-7 w-7 text-primary-foreground relative z-10 group-hover:rotate-12 transition-transform duration-500" />
+        <AnimatedRobot size={80} className="relative z-10 drop-shadow-2xl" />
         
         {/* Recent Badge if messages exist */}
         {sessions.length > 0 && messages.length > 1 && (
-          <span className="absolute top-2 right-2 h-3 w-3 bg-red-500 rounded-full border-2 border-primary z-20" />
+          <span className="absolute top-2 right-2 h-3.5 w-3.5 bg-red-500 rounded-full border-2 border-background shadow-sm z-20" />
         )}
-      </Button>
+      </button>
     </div>
   );
 }
