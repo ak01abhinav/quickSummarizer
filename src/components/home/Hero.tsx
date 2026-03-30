@@ -3,7 +3,7 @@ export default function Hero() {
     <section className="bg-hero-gradient py-20 text-center md:py-32">
       <div className="mx-auto max-w-4xl px-6">
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl">
-          Understanding More,{" "}
+          Understand More,{" "}
           <span className="text-gradient block sm:inline">read less.</span>
         </h1>
 
