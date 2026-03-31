@@ -560,18 +560,18 @@ export default function Chatbot() {
       <button
         onClick={() => setIsOpen(true)}
         className={cn(
-          "absolute bottom-0 right-0 h-[80px] w-[80px] p-0 transition-all duration-500 flex items-center justify-center group outline-none border-none focus:outline-none focus:ring-0 active:outline-none focus-visible:outline-none",
+          "absolute bottom-0 right-0 h-[64px] w-[64px] p-0 transition-all duration-500 flex items-center justify-center group outline-none border-none focus:outline-none focus:ring-0 active:outline-none focus-visible:outline-none",
           isOpen 
             ? "opacity-0 scale-50 pointer-events-none translate-y-10" 
             : "opacity-100 scale-100 hover:scale-[1.05] pointer-events-auto translate-y-0"
         )}
         style={{ WebkitTapHighlightColor: "transparent" }}
       >
-        <AnimatedRobot size={80} className="relative z-10 drop-shadow-2xl" />
+        <AnimatedRobot size={64} className="relative z-10 drop-shadow-2xl" />
         
         {/* Recent Badge if messages exist */}
         {sessions.length > 0 && messages.length > 1 && (
-          <span className="absolute top-2 right-2 h-3.5 w-3.5 bg-red-500 rounded-full border-2 border-background shadow-sm z-20" />
+          <span className="absolute top-1 right-1 h-3.5 w-3.5 bg-red-500 rounded-full border-2 border-background shadow-sm z-20" />
         )}
       </button>
     </div>
